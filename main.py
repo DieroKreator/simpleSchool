@@ -11,7 +11,7 @@ alunos_db = {
         "nome": "João Cruz",
         "validade_assinatura": "2025-12-31"
     },
-        "maria@iterasys.com.br": {
+    "maria@iterasys.com.br": {
         "nome": "Maria Oliveira",
         "validade_assinatura": "2026-05-15"
     },
@@ -29,3 +29,5 @@ def buscar_aluno(dados: AlunoRequest):
         "nome": aluno["nome"],
         "validade_assinatura": aluno["validade_assinatura"]
     }
+
+def buscar_endereco_aluno
