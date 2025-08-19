@@ -1,9 +1,9 @@
 # bibliotecas e frameworks
-from fastapi import FastAPI, HTTPException
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, EmailStr
 
-# crio o objeto da API
-app = FastAPI()
+# crio o objeto do roteador
+router = APIRouter()
 
 # banco de dados simulado (fake)
 alunos_db = {
@@ -34,7 +34,7 @@ alunos_db = {
 class AlunoRequest(BaseModel):
     email: EmailStr
 
-@app.post("/buscar-aluno")
+@router.post("/buscar-aluno")
 def buscar_aluno(dados: AlunoRequest):
     aluno = alunos_db.get(dados.email)
     if not aluno:
@@ -50,7 +50,7 @@ def buscar_aluno(dados: AlunoRequest):
 #         "endereco": aluno["endereco"]
 #     }
     
-@app.get("/buscar-aluno")
+@router.get("/buscar-aluno")
 def buscar_aluno_get(email: EmailStr):
     aluno = alunos_db.get(email)
     if not aluno:
