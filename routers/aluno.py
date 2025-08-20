@@ -57,7 +57,7 @@ def buscar_aluno(dados: AlunoRequest):
 @router.get("/")
 def buscar_aluno_get(email: EmailStr):
     aluno = alunos_db.get(email)
-    logger.info(f"Buscando aluno com email: {dados.email}")
+    logger.info(f"Buscando aluno com email: {email}")
     if not aluno:
         raise HTTPException(status_code=404, detail="Aluno não encontrado")
     return aluno

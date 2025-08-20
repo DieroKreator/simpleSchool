@@ -6,6 +6,9 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Crio o objeto da API
+app = FastAPI()
+
 # Evento de inicialização da aplicação
 @app.on_event("startup")
 def startup_event():
@@ -15,8 +18,5 @@ def startup_event():
 @app.on_event("shutdown")
 def shutdown_event():
     logger.info("Aplicação encerrada!")
-
-# Crio o objeto da API
-app = FastAPI()
 
 app.include_router(aluno.router, prefix="/buscar-aluno", tags=["Aluno"])
