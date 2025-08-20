@@ -45,14 +45,14 @@ def buscar_aluno(dados: AlunoRequest):
         raise HTTPException(status_code=404, detail="Aluno não encontrado")
     return aluno
 
-# @app.post("/buscar-endereco-aluno")
-# def buscar_endereco_aluno(dados: AlunoRequest):
-#     aluno = alunos_db.get(dados.email)
-#     if not aluno:
-#         raise HTTPException(status_code=404, detail="Aluno não encontrado")
-#     return {
-#         "endereco": aluno["endereco"]
-#     }
+@app.post("/buscar-endereco-aluno")
+def buscar_endereco_aluno(dados: AlunoRequest):
+    aluno = alunos_db.get(dados.email)
+    if not aluno:
+        raise HTTPException(status_code=404, detail="Aluno não encontrado")
+    return {
+        "endereco": aluno["endereco"]
+    }
     
 @router.get("/")
 def buscar_aluno_get(email: EmailStr):
@@ -61,3 +61,4 @@ def buscar_aluno_get(email: EmailStr):
     if not aluno:
         raise HTTPException(status_code=404, detail="Aluno não encontrado")
     return aluno
+
