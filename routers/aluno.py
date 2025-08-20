@@ -37,7 +37,7 @@ alunos_db = {
 class AlunoRequest(BaseModel):
     email: EmailStr
 
-@router.post("/buscar-aluno")
+@router.post("/")
 def buscar_aluno(dados: AlunoRequest):
     aluno = alunos_db.get(dados.email)
     logger.info(f"Buscando aluno com email: {dados.email}")
@@ -54,7 +54,7 @@ def buscar_aluno(dados: AlunoRequest):
 #         "endereco": aluno["endereco"]
 #     }
     
-@router.get("/buscar-aluno")
+@router.get("/")
 def buscar_aluno_get(email: EmailStr):
     aluno = alunos_db.get(email)
     logger.info(f"Buscando aluno com email: {dados.email}")
