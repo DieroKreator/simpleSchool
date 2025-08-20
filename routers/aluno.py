@@ -1,6 +1,9 @@
 # bibliotecas e frameworks
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, EmailStr
+import logging
+
+logger = logging.getLogger(__name__)
 
 # crio o objeto do roteador
 router = APIRouter()
@@ -37,6 +40,7 @@ class AlunoRequest(BaseModel):
 @router.post("/buscar-aluno")
 def buscar_aluno(dados: AlunoRequest):
     aluno = alunos_db.get(dados.email)
+    logger.info(f"Buscando aluno com email: {dados.email}")
     if not aluno:
         raise HTTPException(status_code=404, detail="Aluno não encontrado")
     return aluno
@@ -53,6 +57,7 @@ def buscar_aluno(dados: AlunoRequest):
 @router.get("/buscar-aluno")
 def buscar_aluno_get(email: EmailStr):
     aluno = alunos_db.get(email)
+    logger.info(f"Buscando aluno com email: {dados.email}")
     if not aluno:
         raise HTTPException(status_code=404, detail="Aluno não encontrado")
     return aluno
