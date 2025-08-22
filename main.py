@@ -21,4 +21,4 @@ def shutdown_event():
 
 app.include_router(aluno.router, prefix="/buscar-aluno", tags=["Aluno"])
 
-app.include_router(aluno.router, prefix="/buscar-endereco-aluno", tags=["Aluno"])
+# app.include_router(aluno.router, prefix="/buscar-endereco-aluno", tags=["Aluno"])
