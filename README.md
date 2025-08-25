@@ -34,3 +34,7 @@ main.py
 demais.py (aluno.py)
 - APIRouter
 - router
+
+Essa API está evoluindo em etapas:
+1 - API simples (Alô Mundo): apenas consulta o json (dados)
+2 - API local: integração com um banco de dados (SQLAlchemy/SQLite)
